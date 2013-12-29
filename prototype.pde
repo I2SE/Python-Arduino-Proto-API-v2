@@ -1,3 +1,4 @@
+#include <Servo.h> 
 
 #ifndef SERIAL_RATE
 #define SERIAL_RATE         115200
@@ -6,6 +7,8 @@
 #ifndef SERIAL_TIMEOUT
 #define SERIAL_TIMEOUT      5
 #endif
+
+Servo myservo;
 
 void setup() {
     Serial.begin(SERIAL_RATE);
@@ -34,6 +37,12 @@ void loop() {
         case 4 :
             //read analog value
             Serial.println(analogRead(readData())); break;
+        case 5 :
+            //add servo
+            myservo.attach(readData()); break;
+        case 6 :
+            //write servo position
+            myservo.write(readData()); break;
         case 99:
             //just dummy to cancel the current read, needed to prevent lock 
             //when the PC side dropped the "w" that we sent

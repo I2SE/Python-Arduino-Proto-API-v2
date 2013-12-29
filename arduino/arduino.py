@@ -48,6 +48,16 @@ class Arduino(object):
         self.__sendData(pin)
         return self.__getData()
 
+    def servoAdd(self, pin):
+        self.__sendData('5')
+        self.__sendData(pin)
+        return True
+
+    def servoWrite(self, pin):
+        self.__sendData('6')
+        self.__sendData(pin)
+        return True
+
     def turnOff(self):
         for each_pin in self.__OUTPUT_PINS:
             self.setLow(each_pin)

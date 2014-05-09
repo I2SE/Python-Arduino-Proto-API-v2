@@ -7,6 +7,7 @@
 #define SERIAL_TIMEOUT      5
 #endif
 
+#include <Servo.h> 
 #include <EEPROM.h>
 
 void configure_pins(){
@@ -15,6 +16,8 @@ void configure_pins(){
         pinMode(readData(), OUTPUT);
     } 
 }
+
+Servo myservo;
 
 void setup() {
     Serial.begin(SERIAL_RATE);
@@ -38,6 +41,12 @@ void loop() {
         case 4 :
             //read analog value
             Serial.println(analogRead(readData())); break;
+        case 5 :
+            //add servo
+            myservo.attach(readData()); break;
+        case 6 :
+            //write servo position
+            myservo.write(readData()); break;
         case 97:
             //read identifier
             Serial.println(EEPROM.read(0)); break;

@@ -54,9 +54,9 @@ class Arduino(object):
         self.__sendData(pin)
         return True
 
-    def servoWrite(self, pin):
+    def servoWrite(self, value):
         self.__sendData('6')
-        self.__sendData(pin)
+        self.__sendData(str(value))
         return True
 
     def turnOff(self):
